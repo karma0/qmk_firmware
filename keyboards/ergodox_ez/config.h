@@ -47,6 +47,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define TAPPING_TERM    200
 #define IGNORE_MOD_TAP_INTERRUPT // this makes it possible to do rolling combos (zx) with keys that convert to other keys on hold (z becomes ctrl when you hold it, and when this option isn't enabled, z rapidly followed by x actually sends Ctrl-x. That's bad.)
+#define RETRO_TAPPING
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
 #define LOCKING_SUPPORT_ENABLE
@@ -108,14 +109,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DRIVER_LED_TOTAL DRIVER_1_LED_TOTAL + DRIVER_2_LED_TOTAL
 #define RGB_MATRIX_SKIP_FRAMES 10
 
-// #define RGBLIGHT_COLOR_LAYER_0 0x00, 0x00, 0xFF
-/* #define RGBLIGHT_COLOR_LAYER_1 0x00, 0x00, 0xFF */
-/* #define RGBLIGHT_COLOR_LAYER_2 0xFF, 0x00, 0x00 */
-/* #define RGBLIGHT_COLOR_LAYER_3 0x00, 0xFF, 0x00 */
-/* #define RGBLIGHT_COLOR_LAYER_4 0xFF, 0xFF, 0x00 */
-/* #define RGBLIGHT_COLOR_LAYER_5 0x00, 0xFF, 0xFF */
-/* #define RGBLIGHT_COLOR_LAYER_6 0xFF, 0x00, 0xFF */
-/* #define RGBLIGHT_COLOR_LAYER_7 0xFF, 0xFF, 0xFF */
+#define RGBLIGHT_COLOR_LAYER_0 0x00, 0x00, 0xFF
+#define RGBLIGHT_COLOR_LAYER_1 0x00, 0x00, 0xFF
+#define RGBLIGHT_COLOR_LAYER_2 0xFF, 0x00, 0x00
+#define RGBLIGHT_COLOR_LAYER_3 0x00, 0xFF, 0x00
+#define RGBLIGHT_COLOR_LAYER_4 0xFF, 0xFF, 0x00
+#define RGBLIGHT_COLOR_LAYER_5 0x00, 0xFF, 0xFF
+#define RGBLIGHT_COLOR_LAYER_6 0xFF, 0x00, 0xFF
+#define RGBLIGHT_COLOR_LAYER_7 0xFF, 0xFF, 0xFF
 
 /*
  * Feature disable options
