@@ -1,9 +1,12 @@
-#include QMK_KEYBOARD_H
+#include "ergodox_ez.h"
 #include "debug.h"
 #include "action_layer.h"
-#include "sendchar.h"
-#include "virtser.h"
+//#include "sendchar.h"
+//#include "virtser.h"
 #include "version.h"
+
+#include "keymap_german.h"
+#include "keymap_nordic.h"
 
 #define BASE 0 // default layer
 #define SYMB 1 // symbols
@@ -16,6 +19,9 @@ enum custom_keycodes {
   VRSN,
   RGB_SLD
 };
+
+// Color animation
+#define RGB_MATRIX_ANIMATION RGB_MATRIX_CYCLE_ALL
 
 // Fillers to make layering more clear
 #define _______ KC_TRNS  // passthrough
@@ -74,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [BASE] = LAYOUT_ergodox(  // layer 0 : default
         // left hand
-        KC_EQL,         KC_1,         KC_2,   KC_3,   KC_4,   KC_5,   KC_LEFT,
+        KC_LOCK,         KC_1,         KC_2,   KC_3,   KC_4,   KC_5,   KC_LEFT,
         KC_DELT,        KC_Q,         KC_D,   KC_R,   KC_W,   KC_B,   TG(SYMB),
         KC_BSPC,        KC_A,         KC_S,   KC_H,   KC_T,   KC_G,
         KC_LSFT,        CTL_T(KC_Z),  KC_X,   KC_M,   KC_C,   KC_V,   ALL_T(XXXXXXX),
@@ -316,9 +322,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
     case RGB_SLD:
       if (record->event.pressed) {
-        //#ifdef RGBLIGHT_ENABLE
-          rgblight_mode(1);
-        //#endif
+        rgblight_mode(RGB_MATRIX_ANIMATION);
       }
       return false;
       break;
@@ -329,7 +333,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // Runs just one time when the keyboard initializes.
 void matrix_init_user(void) {
 #ifdef RGBLIGHT_COLOR_LAYER_0
+#ifdef RGBLIGHT_ENABLE
   rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
+#endif
 #endif
 };
 
@@ -349,7 +355,9 @@ uint32_t layer_state_set_user(uint32_t state) {
   switch (layer) {
       case 0:
         #ifdef RGBLIGHT_COLOR_LAYER_0
+        #ifdef RGBLIGHT_ENABLE
           rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
+        #endif
         #else
         #ifdef RGBLIGHT_ENABLE
           rgblight_init();
@@ -359,40 +367,52 @@ uint32_t layer_state_set_user(uint32_t state) {
       case 1:
         ergodox_right_led_1_on();
         #ifdef RGBLIGHT_COLOR_LAYER_1
+        #ifdef RGBLIGHT_ENABLE
           rgblight_setrgb(RGBLIGHT_COLOR_LAYER_1);
+        #endif
         #endif
         break;
       case 2:
         ergodox_right_led_2_on();
         #ifdef RGBLIGHT_COLOR_LAYER_2
+        #ifdef RGBLIGHT_ENABLE
           rgblight_setrgb(RGBLIGHT_COLOR_LAYER_2);
+        #endif
         #endif
         break;
       case 3:
         ergodox_right_led_3_on();
         #ifdef RGBLIGHT_COLOR_LAYER_3
+        #ifdef RGBLIGHT_ENABLE
           rgblight_setrgb(RGBLIGHT_COLOR_LAYER_3);
+        #endif
         #endif
         break;
       case 4:
         ergodox_right_led_1_on();
         ergodox_right_led_2_on();
         #ifdef RGBLIGHT_COLOR_LAYER_4
+        #ifdef RGBLIGHT_ENABLE
           rgblight_setrgb(RGBLIGHT_COLOR_LAYER_4);
+        #endif
         #endif
         break;
       case 5:
         ergodox_right_led_1_on();
         ergodox_right_led_3_on();
         #ifdef RGBLIGHT_COLOR_LAYER_5
+        #ifdef RGBLIGHT_ENABLE
           rgblight_setrgb(RGBLIGHT_COLOR_LAYER_5);
+        #endif
         #endif
         break;
       case 6:
         ergodox_right_led_2_on();
         ergodox_right_led_3_on();
         #ifdef RGBLIGHT_COLOR_LAYER_6
+        #ifdef RGBLIGHT_ENABLE
           rgblight_setrgb(RGBLIGHT_COLOR_LAYER_6);
+        #endif
         #endif
         break;
       case 7:
@@ -400,7 +420,9 @@ uint32_t layer_state_set_user(uint32_t state) {
         ergodox_right_led_2_on();
         ergodox_right_led_3_on();
         #ifdef RGBLIGHT_COLOR_LAYER_7
+        #ifdef RGBLIGHT_ENABLE
           rgblight_setrgb(RGBLIGHT_COLOR_LAYER_7);
+        #endif
         #endif
         break;
       default:
