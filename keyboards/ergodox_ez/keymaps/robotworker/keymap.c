@@ -85,10 +85,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------| PgDn |           | End  |------+------+------+------+------+--------|
  * |`/LShift|Z/Ctrl|   X  |   M  |   C  |   V  |      |           |      |   K  |   L  |   ,  |   .  |//Ctrl| RShift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   |      | Meh  |Hyper |CtlAlt| Alt  |                                       |  Alt |CtlAlt| Hyper| Meh  | TT2  |
+ *   | NoOp | Meh  |Hyper |CtlAlt| Alt  |                                       |  Alt |CtlAlt| Hyper| Meh  | TT2  |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,---------------.
- *                                        |AppCmd| CMD  |       |      |Ctrl/Esc|
+ *                                        |AppCmd| CMD  |       | Alt  |Ctrl/Esc|
  *                                 ,------|------|------|       |------+--------+------.
  *                                 |Back  |      | Lock |       | Ins  |        |      |
  *                                 |Space | TT1  |------|       |------| Space  |Enter |
@@ -98,8 +98,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
 // Otherwise, it needs KC_*
-// TODO: DULR, Thumbs, home/end, pageup/down, meta keys
-
 [BASE] = LAYOUT_ergodox(  // layer 0 : default
         // left hand
         LT(NMPD, KC_CAPS), KC_EXLM,        KC_AT,   KC_HASH, KC_DLR, KC_PERC, KC_MINS,
@@ -109,14 +107,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,           KC_MEH,         KC_HYPR, LCTL(KC_LALT),   KC_LALT,
                                                              ALT_T(KC_APP),   KC_LGUI,
                                                                               KC_LOCK,
-                                                             KC_SPC,TT(SYMB), KC_ESC,
+                                                             KC_BSPC, TT(SYMB), KC_ESC,
         // right hand
-             KC_EQL,     KC_CIRC,   KC_AMPR,  KC_ASTR,   KC_LPRN,   KC_RPRN,  TG(NMPD),
-             KC_HOME,    KC_J,   KC_F,  KC_U,   KC_P,   KC_SCLN, KC_BSLS,
-                          KC_Y,   KC_N,  KC_E,   KC_O,   LT(MDIA, KC_I),             GUI_T(KC_QUOT),
-             KC_END, KC_K,   KC_L,  KC_COMM,KC_DOT, CTL_T(KC_SLSH), KC_RSFT,
-                                  KC_LALT, LCTL(KC_LALT),KC_HYPR,KC_MEH,          TT(MDIA),
-             KC_LALT,        CTL_T(KC_ESC),
+             KC_EQL,     KC_CIRC, KC_AMPR, KC_ASTR,      KC_LPRN, KC_RPRN,        TG(NMPD),
+             KC_HOME,    KC_J,    KC_F,    KC_U,         KC_P,    KC_SCLN,        KC_BSLS,
+                         KC_Y,    KC_N,    KC_E,         KC_O,    LT(MDIA, KC_I), GUI_T(KC_QUOT),
+             KC_END,     KC_K,    KC_L,    KC_COMM,      KC_DOT,  CTL_T(KC_SLSH), KC_RSFT,
+                                  KC_LALT, LCTL(KC_LALT),KC_HYPR, KC_MEH,         TT(MDIA),
+             KC_LALT,    CTL_T(KC_ESC),
              KC_INS,
              KC_DEL,KC_SPC, KC_ENT
     ),
