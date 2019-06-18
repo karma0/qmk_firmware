@@ -121,17 +121,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |      |      | WhDn | MsUp | WhUp |      |      | Vol- | Vol+ |      |      | Mute |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      | MsLft| MsDwn| MsRt |      |      | Left | Down |  Up  | Right|      |
+ * |      |      | MsLft| MsDwn| MsRt |      | Left | Down |  Up  | Right|      |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |      | WhLft|      | WhlRt|      |  RW  | Prev | Stop | Play | Next |  FF  |
+ * |      |      | WhLft|      | WhlRt|  RW  | Prev | Stop | Play | Next |  FF  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      | Btn4 | Btn5 |LftClk| MdClk| RtClk|      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_MDIA] = LAYOUT_planck_grid(
     _______, _______, KC_WH_D, KC_MS_U, KC_WH_U, _______, _______, KC_VOLD, KC_VOLU, _______, _______, KC_MUTE,
-    _______, _______, KC_MS_L, KC_MS_D, KC_MS_R, _______, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______,
-    _______, _______, KC_WH_L, _______, KC_WH_R, _______, KC_MRWD, KC_MPRV, KC_MSTP, KC_MPLY, KC_MNXT, KC_MFFD,
+    _______, _______, KC_MS_L, KC_MS_D, KC_MS_R, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
+    _______, _______, KC_WH_L, _______, KC_WH_R, KC_MRWD, KC_MPRV, KC_MSTP, KC_MPLY, KC_MNXT, KC_MFFD, _______,
     _______, _______, KC_BTN5, KC_BTN4, KC_BTN1, KC_BTN3, KC_BTN2, _______, _______, _______, _______, _______
 ),
 
