@@ -314,6 +314,10 @@ void dip_update(uint8_t index, bool active) {
    }
 }
 
+void matrix_init_user(void) {
+   set_single_persistent_default_layer(_WORKMAN);
+}
+
 void matrix_scan_user(void) {
   #ifdef AUDIO_ENABLE
     if (muse_mode) {
