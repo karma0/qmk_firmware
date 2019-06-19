@@ -53,14 +53,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |`Shift|   Z  |   X  |   M  |   C  |   V  |   K  |   L  |   ,  |   .  |/Ctrl |RShift|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |   -  | Meh  | Hyper|CtlAlt| Bksp | SYMB | Enter| Space| Left | Down |  Up  |Right |
+ * |CtlAlt| Meh  | Hyper|  Alt | Bksp | SYMB | Enter| Space| Left | Down |  Up  |Right |
  * `-----------------------------------------------------------------------------------'
  */
 [_WORKMAN] = LAYOUT_planck_grid(
     KC_TAB,         KC_Q,           KC_D,    KC_R,          KC_W,    KC_B, KC_J,   KC_F,   KC_U,    KC_P,    KC_SCLN,        TG(NMPD),
     GUI_T(KC_ESC),  LT(MDIA, KC_A), KC_S,    KC_H,          KC_T,    KC_G, KC_Y,   KC_N,   KC_E,    KC_O,    LT(MDIA, KC_I), GUI_T(KC_QUOT),
     LSFT_T(KC_GRV), CTL_T(KC_Z),    KC_X,    KC_M,          KC_C,    KC_V, KC_K,   KC_L,   KC_COMM, KC_DOT,  CTL_T(KC_SLSH), KC_RSFT,
-    KC_MINS,        KC_MEH,         KC_HYPR, LCTL(KC_LALT), KC_BSPC, SYMB, KC_ENT, KC_SPC, KC_LEFT, KC_DOWN, KC_UP,          KC_RGHT
+    LCTL(KC_LALT),  KC_MEH,         KC_HYPR, KC_LALT,       KC_BSPC, SYMB, KC_ENT, KC_SPC, KC_LEFT, KC_DOWN, KC_UP,          KC_RGHT
 ),
 
 /* Qwerty
@@ -71,14 +71,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |`Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |/Ctrl |RShift|
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |   -  | Meh  | Hyper|CtlAlt| Bksp | SYMB | Enter| Space| Left | Down |  Up  |Right |
+ * |CtlAlt| Meh  | Hyper|  Alt | Bksp | SYMB | Enter| Space| Left | Down |  Up  |Right |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_planck_grid(
     KC_TAB,         KC_Q,           KC_W,    KC_E,          KC_R,    KC_T, KC_Y,   KC_U,   KC_I,    KC_O,    KC_P,              TG(NMPD),
     GUI_T(KC_ESC),  LT(MDIA, KC_A), KC_S,    KC_D,          KC_F,    KC_G, KC_H,   KC_J,   KC_K,    KC_L,    LT(MDIA, KC_SCLN), GUI_T(KC_QUOT),
     LSFT_T(KC_GRV), CTL_T(KC_Z),    KC_X,    KC_C,          KC_V,    KC_B, KC_N,   KC_M,   KC_COMM, KC_DOT,  CTL_T(KC_SLSH),    KC_RSFT,
-    KC_MINS,        KC_MEH,         KC_HYPR, LCTL(KC_LALT), KC_BSPC, SYMB, KC_ENT, KC_SPC, KC_LEFT, KC_DOWN, KC_UP,             KC_RGHT
+    LCTL(KC_LALT),  KC_MEH,         KC_HYPR, KC_LALT,       KC_BSPC, SYMB, KC_ENT, KC_SPC, KC_LEFT, KC_DOWN, KC_UP,          KC_RGHT
 ),
 
 /* Symbols
