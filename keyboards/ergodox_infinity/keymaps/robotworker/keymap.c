@@ -3,12 +3,6 @@
 #include "action_layer.h"
 #include "version.h"
 
-#define BASE 0 // default layer
-#define SYMB 1 // symbols
-#define MDIA 2 // media keys
-#define NMPD 3 // numpad
-#define TXBOLT 4 // TxBolt Steno Virtual Serial
-
 enum custom_keycodes {
   PLACEHOLDER = SAFE_RANGE, // can always be here
   EPRM,
@@ -17,18 +11,18 @@ enum custom_keycodes {
 };
 
 enum custom_layers {
-  _QWERTY,
   _WORKMAN,
-  _DVORAK,
-  _COLEMAK,
-  _LOWER,
-  _RAISE,
+  _QWERTY,
+  _SYMB,
+  _NMPD,
+  _MDIA,
+  _TXBOLT,
   _ADJUST,
-  _GAME,
-  _MOUSE,
-  _NUM,
 };
 
+#define SYMB MO(_SYMB)
+#define NMPD MO(_NMPD)
+#define MDIA MO(_MDIA)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -56,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
 // Otherwise, it needs KC_*
-[BASE] = LAYOUT_ergodox(  // layer 0 : default
+[_WORKMAN] = LAYOUT_ergodox(  // layer 0 : default
         // left hand
         LT(NMPD, KC_CAPS), KC_EXLM,        KC_AT,   KC_HASH, KC_DLR, KC_PERC, KC_MINS,
         KC_TAB,            KC_Q,           KC_D,    KC_R,    KC_W,   KC_B,    KC_PGUP,
@@ -99,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 `--------------------'       `--------------------'
  */
 // SYMBOLS
-[SYMB] = LAYOUT_ergodox(
+[_SYMB] = LAYOUT_ergodox(
        // left hand
        KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   _______,
        _______, KC_EXLM, KC_AMPR, KC_HASH, KC_DLR,  KC_PERC, _______,
@@ -143,7 +137,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
 // MEDIA AND MOUSE
-[MDIA] = LAYOUT_ergodox(
+[_MDIA] = LAYOUT_ergodox(
        _______, _______, _______, _______, _______, _______, _______,
        _______, _______, KC_WH_D, KC_MS_U, KC_WH_U, _______, _______,
        _______, _______, KC_MS_L, KC_MS_D, KC_MS_R, _______,
@@ -186,7 +180,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
 // Numpad
-[NMPD] = LAYOUT_ergodox(
+[_NMPD] = LAYOUT_ergodox(
        _______, _______, _______, _______, _______, _______, _______,
        _______, _______, _______, _______, _______, _______, _______,
        _______, _______, _______, _______, _______, _______,
@@ -259,7 +253,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 `--------------------'       `--------------------'                                                                                                   
  */                                                                                                                                                                                      
 // TxBolt over Serial                                                                                                                                                                    
-[TXBOLT] = LAYOUT_ergodox(                                                                                                                                                               
+[_TXBOLT] = LAYOUT_ergodox(                                                                                                                                                               
     KC_BSPC, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                                                                                                                      
     XXXXXXX, M(NM),   M(NM),   M(NM),   M(NM),   M(NM),   XXXXXXX,                                                                                                                       
     XXXXXXX, M(Sl),   M(Tl),   M(Pl),   M(Hl),   M(X),                                                                                                                                
@@ -333,7 +327,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
  * Runs just one time when the keyboard initializes.
  */
 void matrix_init_user(void) {
-
+    set_single_persistent_default_layer(_WORKMAN);
 };
 
 /**
@@ -348,13 +342,13 @@ void matrix_scan_user(void) {
   ergodox_led_adjust_off();
 
   switch (layer) {
-    case _LOWER:
+    case _MDIA:
       ergodox_led_lower_on();
       break;
-    case _RAISE:
+    case _NMPD:
       ergodox_led_raise_on();
       break;
-    case _ADJUST:
+    case _SYMB:
       ergodox_led_adjust_on();
       break;
   }
